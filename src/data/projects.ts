@@ -1,5 +1,10 @@
 import { Project } from '../types';
 import Device from './image/Device.jpg'
+import time from './image/time.png'
+import netflix from './image/netflix.png'
+import food from './image/food.png'
+import paws from './image/paws.png'
+import insta from './image/insta.png'
 
 const projects: Project[] = [
   {
@@ -15,11 +20,49 @@ const projects: Project[] = [
     featured: true
   },
   {
+    id: 'Tech-Time-Nexus Website',
+    title: 'Tech Time Nexus',
+    description: 'Developed a full-stack web application enabling users to create time capsules, schedule email deliveries, and monitor activity through an analytics dashboard.',
+    longDescription: 'Built a full-stack web application that allows users to create and manage time capsules, schedule email reminders, and track activity through an analytics dashboard. The project features secure authentication, a modern React frontend, and a Node.js/Express backend with scheduled email delivery.',
+    //image: 'https://mir-s3-cdn-cf.behance.net/projects/404/15cb2e182568037.Y3JvcCw5OTUsNzc4LDQ0MSwxOTQ.jpg',
+    image: time,
+    liveLink: 'https://tech-time-nexus-nh2b.vercel.app/',
+    githubLink: 'https://github.com/akanksha9688/Tech_Time_Nexus-',
+    technologies: ['JavaScript','React.js', 'Node.js', 'Nodemailer', 'Axios', 'Hooks','SQL','Authentication & Authorization(JWT,OAuth)'],
+    featured: true
+  },
+  {
+    id: 'Food Hub Website',
+    title: 'Food Hub',
+    description: 'Built a React-based food ordering app with restaurant listings, cart management using Redux Toolkit, and a responsive UI.',
+    longDescription: 'Developed a small React-based food & restaurant listing application with a cart system powered by Redux Toolkit. The app allows users to browse restaurants, add/remove items from the cart, and experience a clean, responsive UI built with Tailwind CSS. Parcel is used for fast development and optimized production builds.',
+    //image: 'https://mir-s3-cdn-cf.behance.net/projects/404/15cb2e182568037.Y3JvcCw5OTUsNzc4LDQ0MSwxOTQ.jpg',
+    image:food,
+    liveLink: 'https://foodhubfood.netlify.app/',
+    githubLink: 'https://github.com/akanksha9688/FoodHub',
+    technologies: ['HTML','Tailwind CSS', 'Javascript', 'React', 'Typscript', 'Hooks','BootStrap'],
+    featured: true
+  },
+  {
+    id: 'Netflix GPT Website',
+    title: 'Netflix GPT',
+    description: 'Developed a Netflix-inspired streaming platform with secure authentication, protected routes, and AI-powered movie discovery.',
+    longDescription: 'Built a Netflix-like web application using React, Tailwind CSS, and Firebase Authentication.The app features secure Sign In  Sign Up, form validation, protected routing, and a dynamic Browse page with movie trailers, suggestions, and a NetflixGPT-powered search experience.',
+    //image: 'https://mir-s3-cdn-cf.behance.net/projects/404/15cb2e182568037.Y3JvcCw5OTUsNzc4LDQ0MSwxOTQ.jpg',
+    image: netflix,
+    liveLink: 'https://netflix-gpt.netlify.app/',
+    githubLink: 'https://github.com/akanksha9688/Netflix-GPT',
+    technologies: ['HTML','Tailwind CSS', 'Javascript', 'React.js', 'Redux.js', 'Firebase Authentication', 'RESTful APIs'],
+    featured: true
+  },
+
+  {
     id: 'Happy-Paws Website',
     title: 'Happy Paws',
     description: 'Connecting pet owners with dedicated volunteers for personalized pet care through integrated technology.',
     longDescription: 'Designed and developed a web-based platform that connects pet owners with compassionate volunteers to provide personalized pet care. The system enables smooth communication between users and maintains a structured database for managing profiles and interactions.',
-    image: 'https://mir-s3-cdn-cf.behance.net/projects/404/15cb2e182568037.Y3JvcCw5OTUsNzc4LDQ0MSwxOTQ.jpg',
+    //image: 'https://mir-s3-cdn-cf.behance.net/projects/404/15cb2e182568037.Y3JvcCw5OTUsNzc4LDQ0MSwxOTQ.jpg',
+    image: paws,
     liveLink: 'https://happypawssss.netlify.app/',
     githubLink: 'https://github.com/akanksha9688/Happy-Pawss',
     technologies: ['HTML','Tailwind CSS', 'Javascript', 'React', 'Typscript', 'Hooks','BootStrap'],
@@ -50,7 +93,8 @@ const projects: Project[] = [
     title: 'Instagram Clone',
     description: 'A React-based Instagram clone frontend featuring post feeds, user profiles, and interactive UI for a full social media experience.',
     longDescription: 'This project is a fully responsive Instagram clone developed using React.js, designed to replicate the core features and user interface of the original Instagram platform. It includes dynamic post feeds, user authentication, profile pages, likes, and comments functionality. The frontend is built with React components, React Router for seamless navigation, and integrates with a Node.js/Express backend and MongoDB database via RESTful APIs. Styled using modern CSS practices, the UI ensures a clean and intuitive user experience across devices. This project offers a hands-on understanding of building scalable social media applications and showcases full-stack integration capabilities.',
-    image: 'https://codesandbox.io/api/v1/sandboxes/l5gk2t/screenshot.png',
+    //image: 'https://dribbble.com/shots/26307843-Instagram-clone-creative-exploration/attachments/12297189?mode=media',
+    image:insta,
     liveLink: 'https://example.com/chatbot',
     githubLink: 'https://github.com/akanksha9688/Clone-Instagram',
     technologies: ['React.js', 'TypeScript', 'MongoDB', 'node.js', 'Mongooes'],

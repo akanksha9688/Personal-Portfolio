@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +25,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+bootcamp certificate.png
+Device.jpg
+food.png
+insta.png
+netflix.png
+paws.png
+personal.jpg
+personal.jpg
+SIH.png
+Tech Expo .png
+time.png

@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="relative pb-8 pt-16 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-gradient-to-t from-background/90 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-gradient-to-t from-white/90 dark:from-background/90 to-transparent"></div>
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -30,9 +30,9 @@ const Footer = () => {
               smooth={true}
               offset={-100}
               duration={800}
-              className="bg-white/10 hover:bg-white/20 p-3 rounded-full cursor-pointer transition-all duration-300 hover-glow"
+              className="bg-white/10 dark:bg-slate-300/10 hover:bg-white/20 dark:hover:bg-slate-300/20 p-3 rounded-full cursor-pointer transition-all duration-300 hover-glow"
             >
-              <ArrowUp size={18} className="text-white" />
+              <ArrowUp size={18} className="text-black dark:text-white" />
             </Link>
           </div>
           
@@ -43,12 +43,12 @@ const Footer = () => {
                 {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item) => (
                   <li key={item}>
                     <Link
-                      to={item.toLowerCase()}
+                      to={item === 'Home' ? 'hero' : item.toLowerCase()}
                       spy={true}
                       smooth={true}
                       offset={-80}
                       duration={500}
-                      className="text-white/70 hover:text-primary-500 cursor-pointer transition-colors duration-300"
+                      className="text-black/70 dark:text-white/70 hover:text-primary-500 dark:hover:text-primary-600 cursor-pointer transition-colors duration-300"
                     >
                       {item}
                     </Link>
@@ -64,15 +64,15 @@ const Footer = () => {
             
             <div>
               <h3 className="text-lg font-semibold mb-3 gradient-text">Contact me</h3>
-              <p className="text-white/70 mb-2">akankshasrivastava9415@gmail.com</p>
-              <p className="text-white/70">Lucknow, UP(India)</p>
+              <p className="text-black/70 dark:text-white/70 mb-2">srivastavaakanksha9415@gmail.com</p>
+              <p className="text-black/70 dark:text-white/70">Lucknow, UP(India)</p>
             </div>
           </div>
           
-          <div className="border-t border-white/10 pt-6 text-center text-white/50 flex items-center justify-center">
+          <div className="border-t border-white/10 dark:border-green-700/30 pt-6 text-center text-black/50 dark:text-white/50 flex items-center justify-center">
             <p>© {new Date().getFullYear()} • Designed by Akanksha</p>
             <Heart size={16} className="mx-1 text-error-500" />
-            <p>using React & Tailwind CSS</p>
+            <p>using React.js & Node.js</p>
           </div>
         </motion.div>
       </div>

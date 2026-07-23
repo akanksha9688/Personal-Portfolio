@@ -4,12 +4,16 @@ import { Send } from 'lucide-react';
 import Card from '../components/UI/Card';
 import Button from '../components/UI/Button';
 import SocialLinks from '../components/UI/SocialLinks';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    subject: '',
     message: '',
+
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,31 +25,85 @@ const ContactSection = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
+    const value = name === 'phone'
+      ? e.target.value.replace(/\D/g, '').slice(0, 10)
+      : e.target.value;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const ownerTemplateId = import.meta.env.VITE_EMAILJS_OWNER_TEMPLATE_ID;
+    const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTO_REPLY_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !ownerTemplateId || !autoReplyTemplateId || !publicKey) {
+      throw new Error('EmailJS is not configured');
+    }
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      name: formData.name,
+      email: formData.email,
+      owner_email: 'srivastavaakanksha9415@gmail.com',
+      to_email: formData.email,
+      reply_to: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+      auto_reply_message:
+        'Thanks for reaching out! We have received your message and will get in touch with you soon.',
+    };
+
+    try {
+      await emailjs.send(serviceId, ownerTemplateId, templateParams, publicKey);
+    } catch (error) {
+      console.error('EmailJS owner notification failed:', error);
+      throw new Error('OWNER_EMAIL_FAILED');
+    }
+
+    try {
+      await emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey);
+    } catch (error) {
+      console.error('EmailJS auto-reply failed:', error);
+      throw new Error('AUTO_REPLY_FAILED');
+    }
+
+    setSubmitStatus({
+      success: true,
+      message: 'Your message has been sent successfully!',
+    });
+
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    });
+  } catch (error) {
+    console.error(error);
+
+    setSubmitStatus({
+      success: false,
+      message: error instanceof Error && error.message === 'AUTO_REPLY_FAILED'
+        ? 'Your message was sent, but the confirmation email could not be sent.'
+        : 'An error occurred while sending your message. ',
+    });
+  } finally {
+    setIsSubmitting(false);
+
     setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus({
-        success: true,
-        message: 'Your message has been sent successfully!',
-      });
-      
-      // Reset form
-      setFormData({ name: '', email: '', message: '' });
-      
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus({});
-      }, 5000);
-    }, 1500);
-  };
+      setSubmitStatus({});
+    }, 5000);
+  }
+};
 
   return (
     <section id="contact" className="py-20 relative">
@@ -72,17 +130,17 @@ const ContactSection = () => {
               
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-semibold mb-1">Email</h4>
-                  <p className="text-white/80">akankshasrivastava9415@gmail.com</p>
+                  <h4 className="text-lg font-semibold mb-1 text-black dark:text-white">Email</h4>
+                  <p className="text-black/80 dark:text-white/80">srivastavaakanksha9415@gmail.com</p>
                 </div>
                 
                 <div>
-                  <h4 className="text-lg font-semibold mb-1">Location</h4>
-                  <p className="text-white/80">Lucknow, UP (India)</p>
+                  <h4 className="text-lg font-semibold mb-1 text-black dark:text-white">Location</h4>
+                  <p className="text-black/80 dark:text-white/80">Lucknow, UP (India)</p>
                 </div>
                 
                 <div>
-                  <h4 className="text-lg font-semibold mb-2">Social Profiles</h4>
+                  <h4 className="text-lg font-semibold mb-2 text-black dark:text-white">Social Profiles</h4>
                   <SocialLinks />
                 </div>
               </div>
@@ -107,13 +165,14 @@ const ContactSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Card className="p-6 md:p-8">
-              <h3 className="text-xl font-bold mb-6 gradient-text">Send a Message</h3>
+              <h3 className="text-xl font-bold mb-6 gradient-text">Fill Out the Form and I'll get back to you shortly!
+              </h3>
               
               <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="name" className="block text-white mb-1">
-                      Name
+                    <label htmlFor="name" className="block text-black dark:text-white mb-1">
+                      Full Name
                     </label>
                     <input
                       type="text"
@@ -122,14 +181,14 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleChange} 
                       required
-                      className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-primary-500 transition-colors duration-300"
-                      placeholder="Your name"
+                      className="w-full px-4 py-2 rounded-lg bg-white/10 dark:bg-slate-300/10 border border-white/20 dark:border-slate-700/30 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:border-primary-500 transition-colors duration-300"
+                      placeholder="Full name"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-white mb-1">
-                      Email
+                    <label htmlFor="email" className="block text-black dark:text-white mb-1">
+                      Email Address
                     </label>
                     <input
                       type="email"
@@ -138,13 +197,50 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-primary-500 transition-colors duration-300"
-                      placeholder="Your email"
+                      className="w-full px-4 py-2 rounded-lg bg-white/10 dark:bg-slate-300/10 border border-white/20 dark:border-slate-700/30 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:border-primary-500 transition-colors duration-300"
+                      placeholder="email@example.com"
                     />
                   </div>
-                  
                   <div>
-                    <label htmlFor="message" className="block text-white mb-1">
+                    <label htmlFor="phone" className="block text-black dark:text-white mb-1">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={(e) => {
+                        e.currentTarget.setCustomValidity('');
+                        handleChange(e);
+                      }}
+                      required
+                      inputMode="numeric"
+                      maxLength={10}
+                      pattern="[0-9]{10}"
+                      title="Check your phone number"
+                      onInvalid={(e) => e.currentTarget.setCustomValidity('Check your phone number')}
+                      className="w-full px-4 py-2 rounded-lg bg-white/10 dark:bg-slate-300/10 border border-white/20 dark:border-slate-700/30 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:border-primary-500 transition-colors duration-300"
+                      placeholder="1234567890"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="subject" className="block text-black dark:text-white mb-1">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 rounded-lg bg-white/10 dark:bg-slate-300/10 border border-white/20 dark:border-slate-700/30 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:border-primary-500 transition-colors duration-300"
+                      placeholder="What is your query about?"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-black dark:text-white mb-1">
                       Message
                     </label>
                     <textarea
@@ -154,7 +250,7 @@ const ContactSection = () => {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-primary-500 transition-colors duration-300 resize-none"
+                      className="w-full px-4 py-2 rounded-lg bg-white/10 dark:bg-green-300/10 border border-white/20 dark:border-slate-700/30 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:border-primary-500 transition-colors duration-300 resize-none"
                       placeholder="Your message"
                     ></textarea>
                   </div>

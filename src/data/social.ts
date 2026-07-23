@@ -18,7 +18,7 @@ const social: Social[] = [
   // },
   {
     name: 'Email',
-    url: 'mailto:akankshasrivastava9415@gmail.com',
+    url: 'mailto:srivastavaakanksha9415@gmail.com',
     icon: 'Mail',
   },
 ];

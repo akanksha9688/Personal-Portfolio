@@ -22,10 +22,10 @@ const SocialLinks = ({ className = '' }: { className?: string }) => {
             rel="noopener noreferrer"
             whileHover={{ y: -3, scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/20 transition-colors duration-300 hover-glow"
+            className="w-10 h-10 rounded-full glass dark:bg-slate-300/10 dark:border-slate-700/30 flex items-center justify-center hover:bg-white/20 dark:hover:bg-slate-300/20 transition-colors duration-300 hover-glow"
             aria-label={item.name}
           >
-            {Icon && <Icon size={18} className="text-white" />}
+            {Icon && <Icon size={18} className="text-black dark:text-white" />}
           </motion.a>
         );
       })}

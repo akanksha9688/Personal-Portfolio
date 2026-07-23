@@ -39,8 +39,8 @@ const ProjectsSection = () => {
               onClick={() => setFilter('all')}
               className={`px-4 py-2 rounded-md transition-all duration-300 ${
                 filter === 'all'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-transparent text-white/70 hover:text-white'
+                  ? 'bg-white/20 dark:bg-slate-300/20 text-black dark:text-white'
+                  : 'bg-transparent text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white'
               }`}
             >
               All Projects
@@ -49,8 +49,8 @@ const ProjectsSection = () => {
               onClick={() => setFilter('featured')}
               className={`px-4 py-2 rounded-md transition-all duration-300 ${
                 filter === 'featured'
-                  ? 'bg-white/20 text-white'
-                  : 'bg-transparent text-white/70 hover:text-white'
+                  ? 'bg-white/20 dark:bg-slate-300/20 text-black dark:text-white'
+                  : 'bg-transparent text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white'
               }`}
             >
               Featured
@@ -76,24 +76,24 @@ const ProjectsSection = () => {
                     alt={project.title}
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background dark:from-slate-100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 
                 <div className="p-6 flex-grow">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-white/70 mb-4">{project.description}</p>
+                  <h3 className="text-xl font-bold mb-2 text-black dark:text-white">{project.title}</h3>
+                  <p className="text-black/70 dark:text-white/70 mb-4">{project.description}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.slice(0, 3).map((tech) => (
                       <span
                         key={`${project.id}-${tech}`}
-                        className="px-2 py-1 text-xs rounded-full bg-white/10 text-white/90"
+                        className="px-2 py-1 text-xs rounded-full bg-white/10 dark:bg-slate-300/10 text-black/90 dark:text-white/90"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 text-xs rounded-full bg-white/10 text-white/90">
+                      <span className="px-2 py-1 text-xs rounded-full bg-white/10 dark:bg-slate-300/10 text-black/90 dark:text-white/90">
                         +{project.technologies.length - 3}
                       </span>
                     )}
@@ -111,12 +111,12 @@ const ProjectsSection = () => {
                   </div>
                 </div>
                 
-                <div className="p-4 border-t border-white/10 flex justify-between">
+                <div className="p-4 border-t border-white/10 dark:border-slate-700/30 flex justify-between">
                   <a
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 hover:text-primary-500 transition-colors duration-300 flex items-center gap-1"
+                    className="text-black/70 dark:text-white/70 hover:text-primary-500 dark:hover:text-primary-600 transition-colors duration-300 flex items-center gap-1"
                   >
                     <ExternalLink size={16} />
                     <span>Live Demo</span>
@@ -126,7 +126,7 @@ const ProjectsSection = () => {
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 hover:text-primary-500 transition-colors duration-300 flex items-center gap-1"
+                    className="text-black/70 dark:text-white/70 hover:text-primary-500 dark:hover:text-primary-600 transition-colors duration-300 flex items-center gap-1"
                   >
                     <Github size={16} />
                     <span>Code</span>

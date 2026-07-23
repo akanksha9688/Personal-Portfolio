@@ -60,9 +60,9 @@ const ProjectDetail = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <Card className="p-6 md:p-8 h-full" hoverEffect={false}>
-            <h1 className="text-2xl md:text-3xl font-bold mb-4">{project.title}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-4 text-black dark:text-white">{project.title}</h1>
             
-            <p className="text-white/80 mb-6">
+            <p className="text-black/80 dark:text-white/80 mb-6">
               {project.longDescription || project.description}
             </p>
             
@@ -72,7 +72,7 @@ const ProjectDetail = () => {
                 {project.technologies.map((tech) => (
                   <span 
                     key={tech} 
-                    className="px-3 py-1 text-sm rounded-full bg-white/10 text-white/90"
+                    className="px-3 py-1 text-sm rounded-full bg-white/10 dark:bg-slate-300/10 text-black/90 dark:text-white/90"
                   >
                     {tech}
                   </span>
@@ -124,7 +124,7 @@ const ProjectDetail = () => {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-white/70 text-sm mb-4">{project.description}</p>
+                  <p className="text-black/70 dark:text-white/70 text-sm mb-4">{project.description}</p>
                   <Button
                     variant="outline"
                     size="sm"

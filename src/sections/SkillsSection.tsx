@@ -1,13 +1,40 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { X } from 'lucide-react';
 import Card from '../components/UI/Card';
-import ProgressBar from '../components/UI/ProgressBar';
 import skills from '../data/skills';
+import sih from '../data/image/SIH.png';
+import techExpo from '../data/image/Tech Expo .png';
+import bootcamp from '../data/image/bootcamp certificate.png';
 
 type SkillCategory = 'all' | 'frontend' | 'backend' | 'tools' | 'other';
 
+const certificates = [
+  {
+    title: 'Intelligent Sewage Detection and Monitoring System',
+    description: 'SIH 2023 Finalist',
+    image: sih,
+  },
+  {
+    title: 'Tech Expo Runner-Up',
+    description: 'College Tech Expo',
+    image: techExpo,
+  },
+  {
+    title: 'Innovation Design and Entrepreneurship Bootcamp Phase-III',
+    description: 'Certified',
+    image: bootcamp,
+  },
+  {
+    title: 'HackerRank',
+    description: 'SQL, Python, Problem Solving (Basic and Intermediate)',
+    image: undefined,
+  },
+];
+
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState<SkillCategory>('all');
+  const [selectedCertificate, setSelectedCertificate] = useState<typeof certificates[number] | null>(null);
   
   const categories: { id: SkillCategory; label: string }[] = [
     { id: 'all', label: 'All Skills' },
@@ -48,8 +75,8 @@ const SkillsSection = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-4 py-2 rounded-md transition-all duration-300 whitespace-nowrap ${
                   activeCategory === category.id
-                    ? 'bg-white/20 text-white'
-                    : 'bg-transparent text-white/70 hover:text-white'
+                    ? 'bg-white/20 dark:bg-slate-300/20 text-black dark:text-white'
+                    : 'bg-transparent text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white'
                 }`}
               >
                 {category.label}
@@ -59,23 +86,20 @@ const SkillsSection = () => {
         </motion.div>
         
         <Card className="p-6 md:p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
             {filteredSkills.map((skill, index) => (
-              <motion.div
+              <motion.li
                 key={skill.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="list-disc ml-5 text-black/80 dark:text-white/80 text-sm"
               >
-                <ProgressBar
-                  value={skill.level}
-                  label={skill.name}
-                  animated={true}
-                />
-              </motion.div>
+                {skill.name}
+              </motion.li>
             ))}
-          </div>
+          </ul>
         </Card>
         
         <motion.div
@@ -86,63 +110,79 @@ const SkillsSection = () => {
           className="mt-12"
         >
           <Card className="p-6 md:p-8">
-            <h3 className="text-xl font-bold mb-6 gradient-text">Core Competencies</h3>
-            
+            <h2 className="text-xl font-bold mb-6 gradient-text">Certifications & Achievements</h2>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-lg font-semibold mb-4">Development</h4>
-                <ul className="space-y-3 text-white/80">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-primary-500 mr-3" />
-                    Modern JavaScript (ES6+) and TypeScript
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-primary-500 mr-3" />
-                    React with Hooks and Context API
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-primary-500 mr-3" />
-                    State Management (Redux)
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-primary-500 mr-3" />
-                    CSS-in-JS and CSS Frameworks
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-primary-500 mr-3" />
-                    Testing (Jest, React Testing Library)
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-semibold mb-4">Technical Skills</h4>
-                <ul className="space-y-3 text-white/80">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-secondary-500 mr-3" />
-                    Responsive and Adaptive Design
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-secondary-500 mr-3" />
-                    Performance Optimization
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-secondary-500 mr-3" />
-                    Web Accessibility (WCAG)
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-secondary-500 mr-3" />
-                    Modern Build Tools and Workflows
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 rounded-full bg-secondary-500 mr-3" />
-                    Version Control (Git) and CI/CD
-                  </li>
-                </ul>
-              </div>
+              {certificates.map((certificate, index) => (
+                <motion.div
+                  key={certificate.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="h-full overflow-hidden p-0">
+                    {certificate.image ? (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedCertificate(certificate)}
+                        className="block w-full cursor-zoom-in"
+                        aria-label={`View ${certificate.title} certificate full size`}
+                      >
+                        <img
+                          src={certificate.image}
+                          alt={`${certificate.title} certificate`}
+                          className="w-full h-40 object-cover"
+                        />
+                      </button>
+                    ) : (
+                      <div className="w-full h-40 flex items-center justify-center bg-white/10 dark:bg-slate-300/10 text-black/60 dark:text-white/60">
+                        Certificate image coming soon
+                      </div>
+                    )}
+                    <div className="p-4">
+                      <h4 className="text-lg font-semibold text-black dark:text-white">
+                        {certificate.title}
+                      </h4>
+                      <p className="mt-2 text-black/70 dark:text-white/70">
+                        {certificate.description}
+                      </p>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
             </div>
           </Card>
         </motion.div>
+
+        {selectedCertificate?.image && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedCertificate.title} certificate preview`}
+            onClick={() => setSelectedCertificate(null)}
+          >
+            <div
+              className="relative max-h-[90vh] max-w-[95vw]"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <img
+                src={selectedCertificate.image}
+                alt={`${selectedCertificate.title} certificate full size`}
+                className="max-h-[85vh] max-w-[90vw] object-contain"
+              />
+              <button
+                type="button"
+                onClick={() => setSelectedCertificate(null)}
+                className="absolute -right-3 -top-3 rounded-full bg-white p-2 text-black shadow-lg transition-transform hover:scale-110"
+                aria-label="Close certificate preview"
+              >
+                <X size={20} />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

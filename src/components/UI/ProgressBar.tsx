@@ -31,13 +31,13 @@ const ProgressBar = ({
     <div className={`mb-4 ${className}`}>
       {label && (
         <div className="flex justify-between mb-1">
-          <span className="text-white/80 text-sm">{label}</span>
+          <span className="text-black/80 dark:text-white/80 text-sm">{label}</span>
           <span className="text-primary-400 text-sm font-medium">{value}%</span>
         </div>
       )}
       <div
         ref={ref}
-        className="h-2 bg-white/10 rounded-full overflow-hidden"
+        className="h-2 bg-white/10 dark:bg-slate-300/10 rounded-full overflow-hidden"
       >
         <motion.div
           initial={{ width: '0%' }}

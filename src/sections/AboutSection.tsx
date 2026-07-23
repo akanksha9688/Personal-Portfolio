@@ -1,7 +1,28 @@
 import { motion } from 'framer-motion';
 import Card from '../components/UI/Card';
-import AnimatedText from '../components/UI/AnimatedText';
+//import AnimatedText from '../components/UI/AnimatedText';
 import experience from '../data/experience';
+
+const education = [
+  {
+    degree: 'Bachelor of Technology in Computer Science and Engineering',
+    institution: 'Pranveer Singh Institute Of Technology',
+    period: 'Dec 2020 - July 2024',
+    result: 'CGPA: 8.3',
+  },
+  {
+    degree: 'senior secondary High School',
+    institution: 'Kamla Nehru Institute of Child Education',
+    period: '2019',
+    //result: 'Percentage: 70%',
+  },
+  {
+    degree: 'Secondary High School',
+    institution: 'Kamla Nehru Institute of Child Education',
+    period: '2017',
+    //result: 'Percentage: 89.3%',
+  },
+];
 
 const AboutSection = () => {
   return (
@@ -17,55 +38,34 @@ const AboutSection = () => {
           About Me
         </motion.h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 items-start">
           <div className="lg:col-span-2">
-            <Card className="p-6 md:p-8 h-full">
-              <h3 className="text-xl font-bold mb-4 gradient-text">Professional Summary</h3>
+            <Card className="p-6 md:p-8">
+              <h3 className="text-xl font-bold mb-6 gradient-text">Education</h3>
               
-              <div className="space-y-4 text-white/80">
-                <AnimatedText
-                  text="Passionate Frontend Developer with 1+ years of experience creating fast, responsive web apps—blending technical precision with user-centered design to build clean, scalable interfaces."
-                  delay={0.1}
-                />
-                
-                <AnimatedText
-                  text="I specialize in building rich user interfaces and interactive experiences that bridge the gap between design and functionality."
-                  delay={0.2}
-                  highlightedWords={['interfaces', 'interactive']}
-                />
-                
-                <AnimatedText
-                  text="My approach combines clean code principles, performance optimization, and user-centered design to deliver exceptional digital experiences."
-                  delay={0.3}
-                  highlightedWords={['clean code', 'performance', 'user-centered']}
-                />
+              <div className="space-y-8">
+                {education.map((item, index) => (
+                  <motion.div
+                    key={`${item.institution}-${index}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="relative pl-6 pb-6 border-l border-white/20 dark:border-slate-700/30 last:border-0 last:pb-0"
+                  >
+                    <div className="absolute top-0 left-[-8px] w-4 h-4 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500" />
+
+                    <div className="mb-2">
+                      <h4 className="text-lg font-semibold text-black dark:text-white">{item.degree}</h4>
+                      <p className="text-black/70 dark:text-white/70">{item.institution}</p>
+                      <p className="text-primary-400 text-sm">{item.period}</p>
+                    </div>
+
+                    <p className="text-black/80 dark:text-white/80">{item.result}</p>
+                  </motion.div>
+                ))}
               </div>
               
-              <div className="mt-8">
-                <h3 className="text-xl font-bold mb-4 gradient-text">Development Philosophy</h3>
-                
-                <ul className="space-y-3 text-white/80">
-                  <AnimatedText
-                    text="• I believe in user-first design and development"
-                    delay={0.1}
-                  />
-                  
-                  <AnimatedText
-                    text="• Code should be clean, maintainable, and well-documented"
-                    delay={0.2}
-                  />
-                  
-                  <AnimatedText
-                    text="• Performance optimization is not an afterthought"
-                    delay={0.3}
-                  />
-                  
-                  <AnimatedText
-                    text="• Continuous learning keeps us relevant and innovative"
-                    delay={0.4}
-                  />
-                </ul>
-              </div>
             </Card>
           </div>
           
@@ -81,23 +81,23 @@ const AboutSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative pl-6 pb-6 border-l border-white/20 last:border-0 last:pb-0"
+                    className="relative pl-6 pb-6 border-l border-white/20 dark:border-slate-700/30 last:border-0 last:pb-0"
                   >
                     <div className="absolute top-0 left-[-8px] w-4 h-4 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500" />
                     
                     <div className="mb-2">
-                      <h4 className="text-lg font-semibold">{job.title}</h4>
-                      <p className="text-white/70">{job.company}</p>
+                      <h4 className="text-lg font-semibold text-black dark:text-white">{job.title}</h4>
+                      <p className="text-black/70 dark:text-white/70">{job.company}</p>
                       <p className="text-primary-400 text-sm">{job.period}</p>
                     </div>
                     
-                    <p className="text-white/80 mb-3">{job.description}</p>
+                    <p className="text-black/80 dark:text-white/80 mb-3">{job.description}</p>
                     
                     <div className="flex flex-wrap gap-2">
                       {job.technologies.map((tech) => (
                         <span
                           key={`${job.company}-${tech}`}
-                          className="px-2 py-1 text-xs rounded-full bg-white/10 text-white/90"
+                          className="px-2 py-1 text-xs rounded-full bg-white/10 dark:bg-green-300/10 text-black/90 dark:text-white/90"
                         >
                           {tech}
                         </span>

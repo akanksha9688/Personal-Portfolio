@@ -2,8 +2,10 @@ import { useCallback } from 'react';
 import { loadFull } from 'tsparticles';
 import Particles from 'react-tsparticles';
 import type { Container, Engine } from 'tsparticles-engine';
+import { useTheme } from '../../context/ThemeContext';
 
 const ParticleBackground = () => {
+  const { isDark } = useTheme();
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
@@ -21,7 +23,7 @@ const ParticleBackground = () => {
         options={{
           background: {
             color: {
-              value: '#000000',
+              value: isDark ? '#000000' : '#ffffff',
             },
           },
           fpsLimit: 60,
@@ -30,7 +32,7 @@ const ParticleBackground = () => {
               value: ['#00c5cb', '#9900cb'],
             },
             links: {
-              color: '#ffffff',
+              color: isDark ? '#ffffff' : '#0f172a',
               distance: 150,
               enable: true,
               opacity: 0.2,

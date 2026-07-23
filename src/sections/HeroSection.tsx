@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
 import {
   ArrowDown,
-  Code,
+  // Code,
   // Terminal,
   // Laptop,
-  Palette,
-  Sparkles,
+  // Palette,
+  // Sparkles,
 } from "lucide-react";
 import { Link as ScrollLink } from "react-scroll";
 import Button from "../components/UI/Button";
 import AnimatedText from "../components/UI/AnimatedText";
 import SocialLinks from "../components/UI/SocialLinks";
+import ProfileImage from "../data/image/Personal.jpg";
 
 const HeroSection = () => {
   return (
@@ -20,7 +21,24 @@ const HeroSection = () => {
     >
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
-          <div className="lg:col-span-3 order-2 lg:order-1">
+          <div className="lg:col-span-2 order-1 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="relative"
+            >
+              <div className="overflow-hidden rounded-[2rem] border border-white/10 dark:border-slate-700/30 shadow-2xl bg-white/5 dark:bg-slate-300/5">
+                <img
+                  src={ProfileImage}
+                  alt="Akanksha Srivastava"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="lg:col-span-3 order-2 lg:order-2">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -30,7 +48,7 @@ const HeroSection = () => {
               <div className="space-y-4">
                 <AnimatedText
                   text="Hello, I'm"
-                  className="text-xl md:text-2xl text-white/90"
+                  className="text-xl md:text-2xl text-black/90 dark:text-white/90"
                   delay={0.2}
                 />
                 <AnimatedText
@@ -41,9 +59,9 @@ const HeroSection = () => {
                 />
 
                 <AnimatedText
-                  text="I build scalable web apps with React, Next.js, TypeScript & Tailwind —leveraging component-driven architecture, efficient state management, API integration, and CI/CD pipelines."
-                  className="text-xl md:text-xl text-white/70 max-w-2xl"
-                  highlightedWords={["React", "TypeScript", "Tailwind", "API", "CI/CD"]}
+                  text="Passionate Full-Stack Developer specializing in React.js, JavaScript, Node.js, Express.js, MongoDB, and REST APIs. Experienced in building responsive, scalable, and user-focused web applications through real-world projects and internship experience. Dedicated to clean architecture, performance optimization, and creating impactful digital experiences with modern development practices."
+                  className="text-xl md:text-xl text-black/70 dark:text-white/70 max-w-2xl"
+                  highlightedWords={["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs"]}
                   delay={0.9}
                 />
               </div>
@@ -77,70 +95,6 @@ const HeroSection = () => {
               <SocialLinks />
             </motion.div>
           </div>
-
-          <div className="lg:col-span-2 order-1 lg:order-2">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="relative"
-            >
-              {/* Floating Cards */}
-              <motion.div
-                animate={{
-                  y: [-10, 10, -10],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="space-y-4"
-              >
-                {/* Code Card */}
-                <div className="glass rounded-xl p-4 ml-8 transform -rotate-6 hover:rotate-0 transition-transform duration-300">
-                  <div className="flex items-center space-x-3">
-                    <Code className="text-primary-500" size={24} />
-                    <div className="text-sm">
-                      <div className="text-primary-400 font-mono">
-                        &lt;code&gt;
-                      </div>
-                      <div className="text-white/80">Clean, Modern Code</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Design Card */}
-                <div className="glass rounded-xl p-4 transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                  <div className="flex items-center space-x-3">
-                    <Palette className="text-secondary-500" size={24} />
-                    <div className="text-sm">
-                      <div className="text-secondary-400 font-mono">design</div>
-                      <div className="text-white/80">Beautiful UI/UX</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Performance Card */}
-                <div className="glass rounded-xl p-4 ml-12 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                  <div className="flex items-center space-x-3">
-                    <Sparkles className="text-accent-500" size={24} />
-                    <div className="text-sm">
-                      <div className="text-accent-400 font-mono">optimized</div>
-                      <div className="text-white/80">Fast and user-friendly</div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Decorative Elements
-              <div className="absolute -top-4 -left-4 w-16 h-16 rounded-xl bg-primary-500/20 backdrop-blur-sm border border-primary-500/30 animate-float" />
-              <div
-                className="absolute -bottom-6 -right-6 w-20 h-20 rounded-xl bg-secondary-500/20 backdrop-blur-sm border border-secondary-500/30 animate-float"
-                style={{ animationDelay: "2s" }}
-              /> */}
-            </motion.div>
-          </div>
         </div>
 
         <motion.div
@@ -157,7 +111,7 @@ const HeroSection = () => {
             duration={800}
             className="flex flex-col items-center cursor-pointer"
           >
-            <p className="text-white/50 mb-2 text-sm">Scroll Down</p>
+            <p className="text-black/50 dark:text-white/50 mb-2 text-sm">Scroll Down</p>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 1, repeat: Infinity }}
