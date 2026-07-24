@@ -1,6 +1,6 @@
 import { Project } from '../types';
 import Device from './image/Device.jpg'
-import time from './image/time.png'
+import time from './image/capsule.png'
 import netflix from './image/netflix.png'
 import food from './image/food.png'
 import paws from './image/paws.png'
