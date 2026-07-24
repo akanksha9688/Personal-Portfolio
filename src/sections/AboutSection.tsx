@@ -11,7 +11,7 @@ const education = [
     result: 'CGPA: 8.3',
   },
   {
-    degree: 'senior secondary High School',
+    degree: 'Senior Secondary High School',
     institution: 'Kamla Nehru Institute of Child Education',
     period: '2019',
     //result: 'Percentage: 70%',

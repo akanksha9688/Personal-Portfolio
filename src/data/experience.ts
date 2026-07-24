@@ -4,6 +4,15 @@ import { Experience } from '../types';
 const experience: Experience[] = [
 
   {
+    title: 'Self-Employed Web Developer',
+    company: 'Freelance Web Developer',
+    period: 'July 2025 - Present',
+    description: 'Designed and developed websites for small businesses and startups. Managed client relationships and delivered projects on time and within budget.',
+    technologies: ['React.js', 'JavaScript', 'HTML5', 'CSS3', 'REST APIs', 'Performance Optimization', 'Responsive Design', 'Git', 'GitHub'],
+  },
+
+
+  {
     title: 'Software Developer Intern',
     company: 'Bluestock Fintech',
     period: 'Jan 2025 - Mar 2025',
@@ -37,10 +46,10 @@ const experience: Experience[] = [
   },
   
   {
-    title: 'Web Developer Intern',
+    title: 'Web Development Intern',
     company: 'Oasis Infobyte',
     period: 'Nov 2022 - Dec 2022',
-    description: 'Completed a 1-month Web Development and Designing internship, gaining hands-on experience in building responsive websites, creating intuitive user interfaces, and developing modern web applications using HTML, CSS, and JavaScript.',
+    description: 'Completed a Web Development and Designing internship, gaining hands-on experience in building responsive websites, creating intuitive user interfaces, and developing modern web applications using HTML, CSS, and JavaScript.',
     technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind', 'UI/UX'],
   },
 ];

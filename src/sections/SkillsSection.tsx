@@ -4,8 +4,9 @@ import { X } from 'lucide-react';
 import Card from '../components/UI/Card';
 import skills from '../data/skills';
 import sih from '../data/image/SIH.png';
-import techExpo from '../data/image/Tech Expo .png';
+import techExpo from '../data/image/Techexpo.png';
 import bootcamp from '../data/image/bootcamp certificate.png';
+import sqlCertificate from '../data/image/sql certificate.png';
 
 type SkillCategory = 'all' | 'frontend' | 'backend' | 'tools' | 'other';
 
@@ -28,7 +29,7 @@ const certificates = [
   {
     title: 'HackerRank',
     description: 'SQL, Python, Problem Solving (Basic and Intermediate)',
-    image: undefined,
+    image: sqlCertificate,
   },
 ];
 
