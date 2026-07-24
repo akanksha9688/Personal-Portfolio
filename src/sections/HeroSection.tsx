@@ -11,7 +11,7 @@ import { Link as ScrollLink } from "react-scroll";
 import Button from "../components/UI/Button";
 import AnimatedText from "../components/UI/AnimatedText";
 import SocialLinks from "../components/UI/SocialLinks";
-import ProfileImage from "../data/image/Personal.jpg";
+import ProfileImage from "../data/image/personal.png";
 
 const HeroSection = () => {
   return (
