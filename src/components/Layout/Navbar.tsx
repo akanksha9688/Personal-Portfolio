@@ -77,7 +77,7 @@ const Navbar = () => {
               {isDark ? <Moon size={20} /> : <Sun size={20} />}
             </button>
             <a
-              href="https://drive.google.com/file/d/1QfC05C7TcDxBHOAhLTWEBWG5mMRbrDl7/view?usp=sharing"
+              href="https://drive.google.com/file/d/1YZZc9ZCPahWc38djpL_maqXcKCPRPvdI/view?usp=sharing"
               className="btn btn-outline"
               target="_blank"
               rel="noopener noreferrer"
@@ -128,7 +128,7 @@ const Navbar = () => {
             </ScrollLink>
           ))}
           <a
-            href="https://drive.google.com/file/d/1QfC05C7TcDxBHOAhLTWEBWG5mMRbrDl7/view?usp=sharing"
+            href="https://drive.google.com/file/d/1YZZc9ZCPahWc38djpL_maqXcKCPRPvdI/view?usp=sharing"
             className="btn btn-outline w-full text-center"
             target="_blank"
             rel="noopener noreferrer"
