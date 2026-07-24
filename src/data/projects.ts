@@ -1,6 +1,6 @@
 import { Project } from '../types';
 import Device from './image/Device.jpg'
-import time from './image/capsule.png'
+import capsule from './image/capsule.png'
 import netflix from './image/netflix.png'
 import food from './image/food.png'
 import paws from './image/paws.png'
@@ -25,7 +25,7 @@ const projects: Project[] = [
     description: 'Developed a full-stack web application enabling users to create time capsules, schedule email deliveries, and monitor activity through an analytics dashboard.',
     longDescription: 'Built a full-stack web application that allows users to create and manage time capsules, schedule email reminders, and track activity through an analytics dashboard. The project features secure authentication, a modern React frontend, and a Node.js/Express backend with scheduled email delivery.',
     //image: 'https://mir-s3-cdn-cf.behance.net/projects/404/15cb2e182568037.Y3JvcCw5OTUsNzc4LDQ0MSwxOTQ.jpg',
-    image: time,
+    image: capsule,
     liveLink: 'https://tech-time-nexus-nh2b.vercel.app/',
     githubLink: 'https://github.com/akanksha9688/Tech_Time_Nexus-',
     technologies: ['JavaScript','React.js', 'Node.js', 'Nodemailer', 'Axios', 'Hooks','SQL','Authentication & Authorization(JWT,OAuth)'],
